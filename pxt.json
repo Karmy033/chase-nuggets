@@ -1,5 +1,6 @@
 {
     "name": "Hungry Shark",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "device": "*",
