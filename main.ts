@@ -1,11 +1,12 @@
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     shark.setPosition(80, 5)
-    cibo.setPosition(randint(0, 150), randint(0, 80))
+    cibo.setPosition(randint(0, 150), randint(0, 110))
     music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.UntilDone)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    cibo.setPosition(randint(0, 150), randint(0, 80))
+    effects.bubbles.startScreenEffect(200)
+    cibo.setPosition(randint(0, 150), randint(0, 110))
     info.changeScoreBy(1)
     info.changeCountdownBy(randint(1, 2))
     music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.UntilDone)
@@ -13,6 +14,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
 let cibo: Sprite = null
 let shark: Sprite = null
 game.splash("CHASE THE NUGGETS", "Game By Carmine Marino.")
+effects.bubbles.startScreenEffect(200)
 scene.setBackgroundImage(img`
     8fffffffffffffffffffffffff88fffff88ffff8998889999999989988888989999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     ffffffffffffffffffffffffff8fffff88ff9f88889889999999989998888898999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -135,7 +137,6 @@ scene.setBackgroundImage(img`
     6cccccccccccccc66666ccccccccccccccccccc6666cccc6644bccccccccccccc8666666666666f66666ffffffff666666666666666666ccccccccccccccccccccccccccccccccccccccccccccccccc8
     6cccccccccccccc66666ccccccccccccccccccc666ccccc6666ccccccccccccccf666666666666ff6666ffffffff6666666666666666666ccccccccccccccc6cccccccccccccccccccccccccccccccc8
     `)
-effects.bubbles.startScreenEffect()
 let Fish = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . c c c c . . . . 
@@ -175,7 +176,7 @@ shark = sprites.create(img`
     ..............fffff.................
     `, SpriteKind.Enemy)
 shark.setPosition(80, 5)
-shark.follow(Fish, 66)
+shark.follow(Fish, 64)
 cibo = sprites.create(img`
     . . b b b b . . 
     . b 5 5 5 5 b . 
